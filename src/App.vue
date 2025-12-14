@@ -1,13 +1,23 @@
 <script setup>
+  import { ref } from 'vue'
   import FoodCard from './components/FoodCard.vue'
+  const foods = ref([
+    { name: '寿司', emoji: '🍣' },
+    { name: 'ハンバーガー', emoji: '🍔' },
+    { name: 'カツ丼', emoji: '🐖' },
+    { name: 'ラーメン', emoji: '🍜'},
+    { name: 'ピザ', emoji: '🍕' },
+    { name: 'サラダ', emoji: '🥗' },
+    { name: '鍋', emoji: '🍲' }
+  ])
 </script>
 
 <template>
   <main>
     <h1 class="title">今日何食べる？</h1>
-    <FoodCard />
+    <FoodCard :name="foods[0].name" :emoji="foods[0].emoji"/>
     VS.
-    <FoodCard />
+    <FoodCard :name="foods[1].name" :emoji="foods[1].emoji"/>
   </main>
 </template>
 
