@@ -10,14 +10,29 @@
     { name: 'サラダ', emoji: '🥗' },
     { name: '鍋', emoji: '🍲' }
   ])
+
+  const pickedFoodIndex = ref(0)
+  const newFoodIndex = ref(1)
+  function pickFood(index) {
+    pickedFoodIndex.value = index
+    newFoodIndex.value ++
+  }
 </script>
 
 <template>
   <main>
     <h1 class="title">今日何食べる？</h1>
-    <FoodCard :name="foods[0].name" :emoji="foods[0].emoji"/>
+    <FoodCard
+      :name="foods[pickedFoodIndex].name"
+      :emoji="foods[pickedFoodIndex].emoji"
+      @click="pickFood(pickedFoodIndex)"
+    />
     VS.
-    <FoodCard :name="foods[1].name" :emoji="foods[1].emoji"/>
+    <FoodCard
+      :name="foods[newFoodIndex].name"
+      :emoji="foods[newFoodIndex].emoji"
+      @click="pickFood(newFoodIndex)"
+    />
   </main>
 </template>
 
