@@ -15,7 +15,7 @@
   const newFoodIndex = ref(1)
   function pickFood(index) {
     pickedFoodIndex.value = index
-    newFoodIndex.value ++
+    newFoodIndex.value++
   }
 </script>
 
@@ -27,12 +27,15 @@
       :emoji="foods[pickedFoodIndex].emoji"
       @click="pickFood(pickedFoodIndex)"
     />
-    VS.
-    <FoodCard
-      :name="foods[newFoodIndex].name"
-      :emoji="foods[newFoodIndex].emoji"
-      @click="pickFood(newFoodIndex)"
-    />
+    <template v-if="newFoodIndex < foods.length">
+      <p>VS.</p>
+      <FoodCard
+        :name="foods[newFoodIndex].name"
+        :emoji="foods[newFoodIndex].emoji"
+        @click="pickFood(newFoodIndex)"
+      />
+    </template>
+
   </main>
 </template>
 
